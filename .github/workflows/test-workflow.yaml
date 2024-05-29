@@ -11,9 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - run: sleep 1; echo "test";
-  deploy-qa: 
+  deploy-dev: 
     needs: ["print-echo", "sleep-then-echo"]
+    environment: dev
     runs-on: ubuntu-latest
     steps: 
-      - run: echo "finally"
-      
+      - run: echo "dev deploy"
+  deploy-qa: 
+    needs: ["deploy-dev"]
+    environment: qa
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "qa deploy"
+  deploy-prod:
+    needs: ["deploy-qa"]
+    environment: prod
+    runs-on: ubuntu-latest
+    steps:
+      - run: "prod deploy"
