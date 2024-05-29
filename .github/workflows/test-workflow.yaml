@@ -7,8 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "test"
-  sleep-long:
+  sleep-then-echo:
     runs-on: ubuntu-latest
     steps: 
-      - run: sleep 10; echo "test";
+      - run: sleep 1; echo "test";
+  deploy-qa: 
+    needs: ["print-echo", "sleep-then-echo"]
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "finally"
       
