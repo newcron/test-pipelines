@@ -1,6 +1,7 @@
 name: learn-github-actions
 run-name: print echo
 on: [push]
+
 jobs:
   print-echo:
     runs-on: ubuntu-latest
