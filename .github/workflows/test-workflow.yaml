@@ -28,4 +28,4 @@ jobs:
     environment: prod
     runs-on: ubuntu-latest
     steps:
-      - run: "prod deploy"
+      - run: echo "prod deploy"
