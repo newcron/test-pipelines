@@ -15,9 +15,12 @@ jobs:
   deploy-dev: 
     needs: ["print-echo", "sleep-then-echo"]
     environment: dev
+    strategy: 
+      matrix:
+        application: ["core", "web", "data", "sync"]
     runs-on: ubuntu-latest
     steps: 
-      - run: echo "dev deploy"
+      - run: echo "dev deploy ${{matrix.application}}"
   deploy-qa: 
     needs: ["deploy-dev"]
     environment: qa
